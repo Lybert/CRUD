@@ -10,7 +10,7 @@
             // include conexión a la base de datos
             include 'conexion.php';
             // insert query
-            $query = "REPLACE INTO altas "
+            $query = "REPLACE INTO clientes "
                     . "SET nif=?, nombre=?, apellido1=?, apellido2=?, "
                     . " email=?, telefono=?, "
                     . "usuario=?, password=? ";

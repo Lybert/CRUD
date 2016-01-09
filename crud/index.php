@@ -7,7 +7,17 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Proyecto CRUD</title>
+        <script type="text/JavaScript">
+            function borra_cliente(id) {
+            var answer = confirm('¿Estás seguro que deseas borrar el cliente?');
+            if (answer) {
+            // si el usuario hace click en ok,
+            // se ejecutar borrar.php
+            window.location = 'borra.php?id=' + id;
+            }
+            }
+        </script>
     </head>
     <body>
         <?php

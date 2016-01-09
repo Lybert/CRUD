@@ -20,7 +20,7 @@ $stmt->bind_result($id, $nif, $nombre, $apellido1, $apellido2, $email, $telefono
 $usuario);
 // enlace a alta de cliente
 echo "<div>";
-echo "<a href='alta.php'>Alta cliente</a>";
+echo "<a href='index.php?accion=altas'>Alta cliente</a>";
 echo "</div>";
 //cabecera de los datos mostrados
 echo "<table>"; //start table
@@ -46,7 +46,7 @@ echo "<td>$telefono</td>";
 echo "<td>$usuario</td>";
 echo "<td>";
 // Este enlace es para modificar el registro
-echo "<a href='edita.php?id={$id}'>Edita</a>";
+echo "<a href='index.php?accion=edita&id={$id}'>Edita</a>";
 echo " / ";
 // Este enlace es para borrar el registro y también se explicará más tarde
 echo "<a href='javascript:borra_cliente(\"$id\")'> Elimina </a>";

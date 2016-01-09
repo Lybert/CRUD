@@ -34,8 +34,7 @@ if ($stmt = $conexion->prepare($query)) {
     $stmt->fetch();
 }
 ?>
-<form action='edita.php?id=<?php echo htmlspecialchars($id); ?>' method='post'
-      border='0'>
+<form action='index.php?accion=edita&id=<?php echo htmlspecialchars($id); ?>' method='post' border='0'>
     <table>
         <tr>
             <td>NIF:</td>

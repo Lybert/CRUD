@@ -27,7 +27,7 @@ if ($_POST) {
     }
 }
 ?>
-<form action='altas.php' method='post'>
+<form action='index.php?accion=altas' method='post'>
     <table border='0'>
         <tr>
             <td>NIF</td>

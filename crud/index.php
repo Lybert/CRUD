@@ -14,6 +14,7 @@
             // se ejecutar borra.php
             window.location = 'borra.php?id=' + id;
             }
+        }
         </script>
     </head>
     <body>

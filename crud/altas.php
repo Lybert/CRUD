@@ -2,7 +2,7 @@
 <?php
 if ($_POST) {
 // include conexión a la base de datos
-    include 'conexion.php';
+   // include 'conexion.php';
 // insert query
     $query = "REPLACE INTO clientes "
             . "SET nif=?, nombre=?, apellido1=?, apellido2=?, "

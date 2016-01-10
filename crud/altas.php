@@ -18,7 +18,7 @@ if ($_POST) {
 // asociar los parámetros
     $stmt->bind_param('ssssssss', $_POST['nif'], $_POST['nombre'],
     $_POST['apellido1'], $_POST['apellido2'], $_POST['email'],
-    $_POST['telefono'], $_POST['usuario'], $_POST['password']);
+    $_POST['telefono'], $_POST['usuario'], $_POST['psha']);
 // Ejecutar la consulta
     if ($stmt->execute()) {
         echo "<div>Registro guardado.</div>";
@@ -68,7 +68,9 @@ if ($_POST) {
         <tr>
             <td></td>
             <td>
-                <input type="submit" name="save" value="Save" />
+                <input type = "button"
+                       value = "Guarda"
+                       onclick = "formhash(this.form, this.form.password);" />
                 <a href="./index.php">Volver al inicio</a>
             </td>
         </tr>

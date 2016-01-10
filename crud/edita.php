@@ -12,7 +12,7 @@ if ($_POST) {
     $stmt = $conexion->prepare($query);
     $stmt->bind_param('ssssssssi', $_POST['nif'], $_POST['nombre'], $_POST['apellido1'],
     $_POST['apellido2'], $_POST['email'], $_POST['telefono'], $_POST['usuario'],
-    $_POST['password'], $id);
+    $_POST['psha'], $id);
     if ($stmt->execute()) {
         echo "Registro actualizado";
     } else {
@@ -87,8 +87,8 @@ htmlspecialchars($nombre, ENT_QUOTES);
         <tr>
             <td></td>
             <td>
-                <input type='submit' value='Guardar' />
-                <a href='index.php'>Volver a Inicio</a>
+                <input type = "button" value = "Login"
+                onclick = "formhash(this.form, this.form.password);" />
             </td>
         </tr>
     </table>

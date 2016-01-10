@@ -2,38 +2,48 @@
 // coger el parámetro que nos permitirá identificar el registro
 // isset() es una función PHP usado para verificar si una variable tiene valor o no
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Registro no encontrado.');
+
 include 'conexion.php';
+
 if ($_POST) {
 // escribir en la tabla cliente
     $query = "UPDATE clientes "
             . "SET nif=?, nombre=?, apellido1=?, apellido2=?, "
             . "email=?, telefono=?, usuario=?, password=? "
             . "WHERE id = ?";
+    
     $stmt = $conexion->prepare($query);
+    
     $stmt->bind_param('ssssssssi', $_POST['nif'], $_POST['nombre'], $_POST['apellido1'],
     $_POST['apellido2'], $_POST['email'], $_POST['telefono'], $_POST['usuario'],
     $_POST['psha'], $id);
+    
     if ($stmt->execute()) {
         echo "Registro actualizado";
     } else {
         echo 'Error al actualizar.';
     }
 }
+
 // leer el registro de la tabla
-$query = "SELECT nif, nombre, apellido1, apellido2, email, telefono, usuario,
-password "
+$query = "SELECT nif, nombre, apellido1, apellido2, email, telefono, usuario, password "
         . "FROM clientes "
         . "WHERE id = ? ";
+
 if ($stmt = $conexion->prepare($query)) {
+    
 // inicializamos el parámetro
     $stmt->bind_param('d', $id);
+
 // ejecutamos la consulta
     $stmt->execute();
     $stmt->bind_result($nif, $nombre, $apellido1, $apellido2, $email, $telefono, $usuario, $password);
+
 // recuperamos la variable
     $stmt->fetch();
 }
 ?>
+
 <form action='index.php?accion=edita&id=<?php echo htmlspecialchars($id); ?>' method='post' border='0'>
     <table>
         <tr>
@@ -87,8 +97,8 @@ htmlspecialchars($nombre, ENT_QUOTES);
         <tr>
             <td></td>
             <td>
-                <input type = "button" value = "Login"
-                onclick = "formhash(this.form, this.form.password);" />
+                <input type='submit' value='Guardar' />
+                <a href="./index.php?action=<?php echo $default_action ?>">Volver a Inicio</a>
             </td>
         </tr>
     </table>

@@ -10,8 +10,7 @@ if (!login_check($conexion)) { //no estas autorizado
         if (login($usuario, $password, $conexion) == true) {
 // Éxito
             $accion = "lista"; //acción por defecto
-            echo "<div class=\"logout\"> <a href=\"index.php?accion=logout\"> logout
-                {$_SESSION['usuario']} </a></div>";
+            echo "<div class=\"logout\"> <a href=\"index.php?accion=logout\"> logout {$_SESSION['usuario']} </a></div>";
         } else {
 // Login error: no coinciden usuario y password
             $accion = "login";
@@ -28,14 +27,13 @@ if (!login_check($conexion)) { //no estas autorizado
         case 'logout':logout();
             $accion = 'login';
     }
-    echo "<div class=\"logout\"> <a href=\"index.php?accion=logout\"> logout
-{$_SESSION['usuario']} </a></div>";
-    {
+    echo "<div class=\"logout\"> <a href=\"index.php?accion=logout\"> logout {$_SESSION['usuario']} </a></div>";
+    if (!isset($accion)) {
         $accion = $default_accion; //acción por defecto $default_action = "lista"
     }
     if (!file_exists($accion . '.php')) { //comprobamos que el fichero exista
-        $accion = 'lista'; //si no existe mostramos la página por defecto
-        echo "Operación no soportada: Podíamos mostrar la página 404";
+        $accion = $default_accion; //si no existe mostramos la página por defecto
+        echo "Operación no soportada: 404 [Prueba: Default is ". $default_action ." ] and action= ". $action ."!";
     }
 }
 include( $accion . '.php'); //y ahora mostramos la pagina llamada

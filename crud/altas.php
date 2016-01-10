@@ -11,7 +11,7 @@ if ($_POST) {
     echo $query, "<br>";
 // prepare query for execution
     if ($stmt = $conexion->prepare($query)) {
-        echo "<div>registro preparado.</div>";
+        // echo "<div>registro preparado.</div>";
     } else {
         die('Imposible preparar el registro.' . $conexion->error);
     }
@@ -21,7 +21,7 @@ if ($_POST) {
     $_POST['telefono'], $_POST['usuario'], $_POST['psha']);
 // Ejecutar la consulta
     if ($stmt->execute()) {
-        echo "<div>Registro guardado.</div>";
+        // echo "<div>Registro guardado.</div>";
     } else {
         die('Imposible guardar el registro: ' . $conexion->error);
     }
@@ -71,7 +71,7 @@ if ($_POST) {
                 <input type = "button"
                        value = "Guarda"
                        onclick = "formhash(this.form, this.form.password);" />
-                <a href="./index.php">Volver al inicio</a>
+                <a href='index.php?accion=lista'>Volver al inicio</a>
             </td>
         </tr>
     </table>

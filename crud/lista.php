@@ -1,27 +1,31 @@
 <h1>Listado de Clientes</h1>
 <?php
-// incluir la conexión a la base de datos
-// include 'conexion.php';
 $action = isset($_GET['action']) ? $_GET['action'] : "";
+
 // si viene de borra.php
 if ($action == 'deleted') {
     echo "<div>El registro cliente ha sido borrado.</div>";
 }
+
 // Elegir los datos que deseamos recuperar de la tabla
 $query = "SELECT id, nif, nombre, apellido1, apellido2, email, telefono, usuario "
 . "FROM clientes "
 . "ORDER BY apellido1, apellido2, nombre";
+
+// Preparamos y ejecutamos la consulta
 if ($stmt = $conexion->prepare($query)) {
 if (!$stmt->execute()) {
 die('Error de ejecución de la consulta. ' . $conexion->error);
 }
+
 // recoger los datos
-$stmt->bind_result($id, $nif, $nombre, $apellido1, $apellido2, $email, $telefono,
-$usuario);
+$stmt->bind_result($id, $nif, $nombre, $apellido1, $apellido2, $email, $telefono, $usuario);
+
 // enlace a alta de cliente
 echo "<div>";
 echo "<a href='index.php?accion=altas'>Alta cliente</a>";
 echo "</div>";
+
 //cabecera de los datos mostrados
 echo "<table>"; //start table
 //creating our table heading

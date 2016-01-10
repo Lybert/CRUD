@@ -1,4 +1,5 @@
 <?php
+
 // incluir la conexión a la base de datos
 // include 'conexion.php';
 // coger el parámetro que nos permitirá identificar el registro
@@ -11,8 +12,8 @@ $stmt->bind_param('i', $id);
 if ($stmt->execute()) {
 // después de borrar ir a index.php de nuevo e
 // informar que el archivo fue borrado
-header('Location: index.php?action=deleted');
+    header('Location: index.php?accion=lista&estado=deleted');
 } else {
-die('Imposible borrar el registro.');
+    die('Imposible borrar el registro.');
 }
 ?>
